@@ -1,15 +1,19 @@
-# Getting Started with Create React App
+# Dora's Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Vibecoded website using cursor ai to practice prompt engineering and showcase my skills, resume, and personal interests.
 
-## Available Scripts
+## Pages
 
-In the project directory, you can run:
+- Home - Welcome screen with loading animation
+- About Me - Personal information, hobbies, and interests
+- Resume - Professional experience and skills
+- Contact - Get in touch information
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Cursor
+- React 19
+- TypeScript
+- Styled Components
+- Framer Motion
+- React Router DOM

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 
 // Import components
