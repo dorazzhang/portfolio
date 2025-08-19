@@ -550,7 +550,7 @@ const AboutMe: React.FC = () => {
         
         <MainSection>
           <ProfileSection>
-            <ProfileImage src="./images/profile.png" alt="Dora's profile picture" />
+            <ProfileImage src="./images/profile.PNG" alt="Dora's profile picture" />
           </ProfileSection>
           
           <AboutSection>
@@ -594,7 +594,7 @@ const AboutMe: React.FC = () => {
                     transition={{ delay: 0.1, duration: 0.6 }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                   >
-                    <HobbyImage src="./images/badminton_team.jpg" />
+                    <HobbyImage src="./images/badminton_team.JPG" />
                     <HobbyCardDescription>
                       <HobbyCardText>my high school team</HobbyCardText>
                     </HobbyCardDescription>
@@ -605,7 +605,7 @@ const AboutMe: React.FC = () => {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                   >
-                    <HobbyImage src="./images/badminton_medal.png" />
+                    <HobbyImage src="./images/badminton_medal.PNG" />
                     <HobbyCardDescription>
                       <HobbyCardText>CIFs! 3rd place in mixed</HobbyCardText>
                     </HobbyCardDescription>
@@ -616,7 +616,7 @@ const AboutMe: React.FC = () => {
                     transition={{ delay: 0.3, duration: 0.6 }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                   >
-                    <HobbyImage src="./images/badminton_cifs.jpg" />
+                    <HobbyImage src="./images/badminton_cifs.JPG" />
                     <HobbyCardDescription>
                       <HobbyCardText>mid-game snapshot </HobbyCardText>
                     </HobbyCardDescription>
@@ -885,7 +885,7 @@ const AboutMe: React.FC = () => {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <HobbyImage src="./images/friends1.jpeg"/>
+                <HobbyImage src="./images/friends1.JPEG"/>
               </HobbyImageCard>
               <HobbyImageCard
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -893,7 +893,7 @@ const AboutMe: React.FC = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <HobbyImage src="./images/friends8.jpg"/>
+                <HobbyImage src="./images/friends8.JPG"/>
               </HobbyImageCard>
               <HobbyImageCard
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -909,7 +909,7 @@ const AboutMe: React.FC = () => {
                 transition={{ delay: 0.7, duration: 0.6 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <HobbyImage src="./images/friends7.jpg"/>
+                <HobbyImage src="./images/friends7.JPG"/>
               </HobbyImageCard>
               <HobbyImageCard
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -917,7 +917,7 @@ const AboutMe: React.FC = () => {
                 transition={{ delay: 0.8, duration: 0.6 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <HobbyImage src="./images/friends4.png"/>
+                <HobbyImage src="./images/friends4.PNG"/>
               </HobbyImageCard>
               <HobbyImageCard
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -933,7 +933,7 @@ const AboutMe: React.FC = () => {
                 transition={{ delay: 1.0, duration: 0.6 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <HobbyImage src="./images/child.jpg"/>
+                <HobbyImage src="./images/child.JPG"/>
               </HobbyImageCard>
               <HobbyImageCard
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -949,7 +949,7 @@ const AboutMe: React.FC = () => {
                 transition={{ delay: 1.2, duration: 0.6 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <HobbyImage src="/images/friends6.jpg"/>
+                <HobbyImage src="./images/friends6.JPG"/>
               </HobbyImageCard>
             </HobbyImageGrid>
           </HobbySection>
