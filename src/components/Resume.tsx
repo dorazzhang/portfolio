@@ -53,6 +53,14 @@ const PageTitle = styled.h1`
   text-align: center;
 `;
 
+const Description = styled.h5`
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+`;
+
 const Section = styled.section`
   margin-bottom: 50px;
 `;
@@ -215,6 +223,8 @@ const Resume: React.FC = () => {
       </StarsContainer>
       <ContentWrapper>
         <PageTitle>Resume</PageTitle>
+
+        <Description>Last updated: Aug 2025</Description>
         
         <Section>
           <SectionTitle>Education</SectionTitle>
@@ -252,7 +262,6 @@ const Resume: React.FC = () => {
                 <SkillItem>Pandas</SkillItem>
                 <SkillItem>NumPy</SkillItem>
                 <SkillItem>Matplotlib</SkillItem>
-                <SkillItem>Next.js</SkillItem>
               </SkillList>
             </SkillCategory>
             
