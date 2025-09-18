@@ -2,7 +2,7 @@
 
 Personal website to showcase my skills, resume, and personal interests.
 
-## Pages
+# Pages
 
 - Home - Welcome screen with loading animation
 - About Me - Personal information, hobbies, and interests
@@ -10,7 +10,7 @@ Personal website to showcase my skills, resume, and personal interests.
 - Resume - Professional experience and skills
 - Contact - Get in touch information
 
-## Technologies Used
+# Technologies Used
 
 - React 19
 - TypeScript
@@ -18,3 +18,8 @@ Personal website to showcase my skills, resume, and personal interests.
 - Framer Motion
 - React Router DOM
 - Github Pages
+
+# Next steps
+
+- implement responsive design for all screen sizes
+- improve loading page performance and UX
