@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -189,28 +190,6 @@ const NavLink = styled.a<{ active?: boolean }>`
   }
 `;
 
-const WebsiteSignature = styled.div`
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  pointer-events: none;
-`;
-
-const DoraIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-  
-  svg {
-    width: 100%;
-    height: 100%;
-    filter: brightness(0) invert(1);
-  }
-`;
 
 const NavigationWrapper: React.FC = () => {
   const location = useLocation();

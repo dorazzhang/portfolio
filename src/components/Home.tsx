@@ -81,15 +81,6 @@ const Subtitle = styled.p`
   opacity: 0.95;
 `;
 
-const Subtitle2 = styled.p`
-  font-family: 'Lora', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin: 1px 0 0 60px;
-  color: white;
-  line-height: 1.6;
-  opacity: 0.95;
-`;
 
 const DoraIcon = styled.div`
   width: 80px;

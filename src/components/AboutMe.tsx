@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -85,22 +86,7 @@ const ProfileImage = styled.img`
   object-fit: cover;
 `;
 
-const ProfileName = styled.h2`
-  font-family: 'Lora', serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: white;
-  margin: 0 0 10px 0;
-  text-align: center;
-`;
 
-const ProfileTagline = styled.p`
-  font-family: 'Lora', serif;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-style: italic;
-  margin: 0;
-`;
 
 const AboutSection = styled.div`
   background: rgba(255, 255, 255, 0.1);
@@ -114,13 +100,6 @@ const AboutSection = styled.div`
   justify-content: center;
 `;
 
-const AboutTitle = styled.h3`
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 20px 0;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-`;
 
 const AboutText = styled.p`
   font-family: 'Lora', serif;
