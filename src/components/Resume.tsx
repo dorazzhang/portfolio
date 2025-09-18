@@ -231,9 +231,8 @@ const Resume: React.FC = () => {
           <ResumeCard>
             <CardHeader>
               <CardTitle>Cornell University, College of Engineering</CardTitle>
-              <CardDate>Expected May 2027</CardDate>
             </CardHeader>
-            <CardSubtitle>B.S. in Computer Science, Minors in Electrical & Computer Engineering/Artificial Intelligence</CardSubtitle>
+            <CardSubtitle>B.S. in Computer Science, Intended Minors in Electrical & Computer Engineering/Artificial Intelligence</CardSubtitle>
             <CardContent>
               Ithaca, NY | GPA: 3.9<br/>
               Relevant Courses: Data Structures & Object-Oriented Programming, Discrete Structures, Linear Algebra, 
@@ -251,6 +250,8 @@ const Resume: React.FC = () => {
                 <SkillItem>Python</SkillItem>
                 <SkillItem>Java</SkillItem>
                 <SkillItem>SQL</SkillItem>
+                <SkillItem>R</SkillItem>
+                <SkillItem>Typescript</SkillItem>
                 <SkillItem>Javascript</SkillItem>
               </SkillList>
             </SkillCategory>
@@ -262,6 +263,10 @@ const Resume: React.FC = () => {
                 <SkillItem>Pandas</SkillItem>
                 <SkillItem>NumPy</SkillItem>
                 <SkillItem>Matplotlib</SkillItem>
+                <SkillItem>PyTorch</SkillItem>
+                <SkillItem>OpenCV</SkillItem>
+                <SkillItem>React</SkillItem>
+                <SkillItem>Next.js</SkillItem>
               </SkillList>
             </SkillCategory>
             
@@ -279,10 +284,24 @@ const Resume: React.FC = () => {
 
         <Section>
           <SectionTitle>Experience and Activities</SectionTitle>
+
+          <ResumeCard>
+            <CardHeader>
+              <CardTitle>Nexus Project Team, Software Developer</CardTitle>
+              <CardDate>Nov 2024 - Present</CardDate>
+            </CardHeader>
+            <CardSubtitle>Ithaca, NY</CardSubtitle>
+            <CardContent>
+              • Collaborated with diverse team of software/hardware engineers to create autonomous robot to filter microplastics from beach<br/>
+              • Designed and integrated a path planning algorithm with steering control to optimize autonomous, smooth robot navigation<br/>
+              • Researched obstacle avoidance using LiDAR-based SLAM with DepthAI RGB-D input and YOLOv8 object detection
+            </CardContent>
+          </ResumeCard>
+
           <ResumeCard>
             <CardHeader>
               <CardTitle>UCSD Picasso Lab, Undergraduate Research Assistant</CardTitle>
-              <CardDate>May 2025 - Present</CardDate>
+              <CardDate>May 2025 - Sept 2025</CardDate>
             </CardHeader>
             <CardSubtitle>San Diego, CA</CardSubtitle>
             <CardContent>
@@ -294,21 +313,8 @@ const Resume: React.FC = () => {
           
           <ResumeCard>
             <CardHeader>
-              <CardTitle>Nexus Project Team, Software Developer</CardTitle>
-              <CardDate>Nov 2024 - Present</CardDate>
-            </CardHeader>
-            <CardSubtitle>Ithaca, NY</CardSubtitle>
-            <CardContent>
-              • Collaborated with diverse team of software/hardware engineers to create autonomous robot to filter microplastics from beach<br/>
-              • Implemented PID controllers in ROS2 to coordinate synchronized multi-motor steering and differential drive behaviors<br/>
-              • Researched and applied path planning algorithms to optimize robot navigation while traversing unstructured beach terrains
-            </CardContent>
-          </ResumeCard>
-          
-          <ResumeCard>
-            <CardHeader>
               <CardTitle>Cornell Data Journal, Project Lead</CardTitle>
-              <CardDate>Feb 2025 - Present</CardDate>
+              <CardDate>Feb 2025 - Jun 2025</CardDate>
             </CardHeader>
             <CardSubtitle>Ithaca, NY</CardSubtitle>
             <CardContent>
