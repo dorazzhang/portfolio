@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const ProjectsContainer = styled(motion.div)`
+const ProjectsPageContainer = styled(motion.div)`
   min-height: 100vh;
   background: linear-gradient(135deg, #3e45a8 0%, #070924 100%);
   color: white;
@@ -49,30 +49,128 @@ const PageTitle = styled.h1`
   font-size: 3rem;
   font-weight: 600;
   color: white;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: center;
 `;
 
-const ProjectsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
+const Disclaimer = styled.p`
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 40px;
+  opacity: 0.8;
+`;
+
+const ProjectsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
   margin-top: 40px;
 `;
 
-const ProjectCard = styled(motion.div)`
+const ProjectRow = styled(motion.div)`
+  display: flex;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
+  overflow: hidden;
   transition: all 0.3s ease;
+  min-height: 300px;
+  position: relative;
   
   &:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    min-height: auto;
+  }
+`;
+
+const ProjectGallery = styled.div`
+  flex: 1;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const GalleryImage = styled(motion.img)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+`;
+
+const FallbackText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  z-index: 5;
+`;
+
+const GalleryNavigation = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+`;
+
+const GalleryDot = styled.button<{ active: boolean }>`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: ${props => props.active ? 'white' : 'rgba(255, 255, 255, 0.5)'};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: white;
+  }
+`;
+
+const ProjectContent = styled.div`
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const HackathonTag = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  z-index: 10;
 `;
 
 const ProjectTitle = styled.h3`
@@ -132,54 +230,110 @@ const ProjectLink = styled.a`
   }
 `;
 
+const ProjectGalleryComponent: React.FC<{ images: string[]; title: string }> = ({ images, title }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageError, setImageError] = useState(false);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    setImageError(false);
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+    setImageError(false);
+  };
+
+  // Debug logging
+  console.log('Gallery images:', images);
+  console.log('Current image:', images[currentImageIndex]);
+
+  return (
+    <ProjectGallery>
+      {!imageError ? (
+        <GalleryImage
+          key={currentImageIndex}
+          src={images[currentImageIndex]}
+          alt={`${title} - Image ${currentImageIndex + 1}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          onClick={nextImage}
+          style={{ cursor: 'pointer' }}
+          onError={(e) => {
+            console.error('Image failed to load:', images[currentImageIndex]);
+            console.error('Error event:', e);
+            setImageError(true);
+          }}
+          onLoad={() => {
+            console.log('Image loaded successfully:', images[currentImageIndex]);
+          }}
+        />
+      ) : (
+        <FallbackText>
+          <div>Image failed to load</div>
+          <div style={{ fontSize: '0.8rem', marginTop: '10px' }}>
+            {images[currentImageIndex]}
+          </div>
+          <button 
+            onClick={() => setImageError(false)}
+            style={{
+              marginTop: '10px',
+              padding: '5px 10px',
+              background: 'rgba(255,255,255,0.2)',
+              border: '1px solid white',
+              color: 'white',
+              borderRadius: '5px',
+              cursor: 'pointer'
+            }}
+          >
+            Retry
+          </button>
+        </FallbackText>
+      )}
+      <GalleryNavigation>
+        {images.map((_, index) => (
+          <GalleryDot
+            key={index}
+            active={index === currentImageIndex}
+            onClick={() => goToImage(index)}
+          />
+        ))}
+      </GalleryNavigation>
+    </ProjectGallery>
+  );
+};
+
 const Projects: React.FC = () => {
   const projects = [
     {
+      title: "TuneShift",
+      description: "Ambient music is scientifically proven to improve productivity and focus, but how can we get rid of the external distraction and friction that comes with using streaming services? TuneShift is a web app that sees the content on your screen and automatically/seamlessly generates music to suite your current task.",
+      tech: ["MediaDevices API", "Tesseract.js", "Cerebras", "Suno", "Modal", "Next.js","React", "Typescript"],
+      github: "https://github.com/dsnarne/adaptive_sound",
+      page: "https://plume.hackmit.org/project/sobfq-hsqge-hdyfi-fimqb",
+      hackathon: true,
+      images: [
+        "/portfolio/images/tuneshift.png",
+        "/portfolio/images/pipeline.png",
+        "/portfolio/images/hackmit.png"
+      ]
+    },
+    {
       title: "Personal Portfolio Website",
-      description: "A modern, responsive portfolio built with React, TypeScript, and styled-components. Features smooth animations, gradient backgrounds, and a clean design aesthetic.",
-      tech: ["React", "TypeScript", "Styled Components", "Framer Motion"],
-      github: "#",
-      live: "#"
-    },
-    {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce application with user authentication, product management, shopping cart functionality, and payment integration.",
-      tech: ["Node.js", "Express", "MongoDB", "React", "Stripe"],
-      github: "#",
-      live: "#"
-    },
-    {
-      title: "Machine Learning Model",
-      description: "Implemented a machine learning algorithm for data classification using Python, scikit-learn, and pandas. Achieved 95% accuracy on test data.",
-      tech: ["Python", "scikit-learn", "pandas", "numpy", "matplotlib"],
-      github: "#",
-      live: "#"
-    },
-    {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, user roles, and drag-and-drop functionality for organizing projects.",
-      tech: ["React", "Node.js", "Socket.io", "PostgreSQL", "Docker"],
-      github: "#",
-      live: "#"
-    },
-    {
-      title: "Weather Dashboard",
-      description: "Interactive weather dashboard that displays current conditions, forecasts, and historical data with beautiful charts and responsive design.",
-      tech: ["JavaScript", "HTML5", "CSS3", "Chart.js", "Weather API"],
-      github: "#",
-      live: "#"
-    },
-    {
-      title: "Data Visualization Tool",
-      description: "Web-based tool for creating interactive charts and graphs from CSV data. Supports multiple chart types and export functionality.",
-      tech: ["D3.js", "React", "Python", "Flask", "Pandas"],
-      github: "#",
-      live: "#"
+      description: "A modern, interactive portfolio built with React, TypeScript, and styled-components. Features smooth animations, gradient backgrounds, and a clean design aesthetic that showcases my work and personality.",
+      tech: ["React", "TypeScript", "Styled Components", "Framer Motion", "React Router"],
+      github: "https://github.com/dorazzhang/portfolio",
+      page: "https://dorazzhang.github.io/portfolio/",
+      hackathon: false,
+      images: [
+        "/portfolio/images/home.png"
+      ]
     }
   ];
 
   return (
-    <ProjectsContainer
+    <ProjectsPageContainer
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -235,35 +389,40 @@ const Projects: React.FC = () => {
       </StarsContainer>
       <ContentWrapper>
         <PageTitle>Projects</PageTitle>
+        <Disclaimer>more coming soon I promise...</Disclaimer>
         
-        <ProjectsGrid>
+        <ProjectsList>
           {projects.map((project, index) => (
-            <ProjectCard
+            <ProjectRow
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
             >
-              <ProjectTitle>{project.title}</ProjectTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
-              <ProjectTech>
-                {project.tech.map((tech, techIndex) => (
-                  <TechTag key={techIndex}>{tech}</TechTag>
-                ))}
-              </ProjectTech>
-              <ProjectLinks>
-                <ProjectLink href={project.github} target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </ProjectLink>
-                <ProjectLink href={project.live} target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </ProjectLink>
-              </ProjectLinks>
-            </ProjectCard>
+              {project.hackathon && <HackathonTag>Hackathon</HackathonTag>}
+              <ProjectGalleryComponent images={project.images} title={project.title} />
+              <ProjectContent>
+                <ProjectTitle>{project.title}</ProjectTitle>
+                <ProjectDescription>{project.description}</ProjectDescription>
+                <ProjectTech>
+                  {project.tech.map((tech, techIndex) => (
+                    <TechTag key={techIndex}>{tech}</TechTag>
+                  ))}
+                </ProjectTech>
+                <ProjectLinks>
+                  <ProjectLink href={project.github} target="_blank" rel="noopener noreferrer">
+                    GitHub
+                  </ProjectLink>
+                  <ProjectLink href={project.page} target="_blank" rel="noopener noreferrer">
+                    View Project
+                  </ProjectLink>
+                </ProjectLinks>
+              </ProjectContent>
+            </ProjectRow>
           ))}
-        </ProjectsGrid>
+        </ProjectsList>
       </ContentWrapper>
-    </ProjectsContainer>
+    </ProjectsPageContainer>
   );
 };
 

@@ -162,10 +162,10 @@ const Home: React.FC = () => {
         <NameTitle>
           Dora Zhang
           <DoraIcon>
-            <img src="./images/websiteicon.png" alt="Dora Icon" />
+            <img src="/portfolio/images/websiteicon.png" alt="Dora Icon" />
           </DoraIcon>
         </NameTitle>
-        <Subtitle>sophomore at Cornell majoring in Computer Science. curious. driven. innovative.</Subtitle>
+        <Subtitle>undergraduate at Cornell majoring in Computer Science. curious. driven. innovative.</Subtitle>
       </MainContent>
     </HomeContainer>
   );
