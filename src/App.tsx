@@ -46,6 +46,99 @@ const LoadingContainer = styled(motion.div)`
   overflow: hidden;
 `;
 
+const SolarSystemContainer = styled.div`
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+`;
+
+const Sun = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #ffd700, #ff8c00);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ffd700;
+  z-index: 10;
+`;
+
+const Orbit = styled.div<{ radius: number; duration: number }>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: ${props => props.radius * 2}px;
+  height: ${props => props.radius * 2}px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: rotate ${props => props.duration}s linear infinite;
+  
+  @keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+`;
+
+const Planet = styled.div<{ color: string; size: number }>`
+  position: absolute;
+  top: -${props => props.size / 2}px;
+  right: -${props => props.size / 2}px;
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  background: ${props => props.color};
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+`;
+
+const ClockHand = styled(motion.div)<{ progress: number }>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 150px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(${props => props.progress * 360}deg);
+  border-radius: 2px;
+  z-index: 5;
+`;
+
+const LoadingText = styled(motion.h2)`
+  font-size: 2rem;
+  margin: 40px 0 0 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-align: center;
+`;
+
+const EnterButton = styled(motion.button)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+  }
+`;
+
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
   position: absolute;
   left: ${props => props.left};
@@ -254,15 +347,16 @@ const NavigationWrapper: React.FC = () => {
 };
 
 const AppContent: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'loading' | 'welcome' | 'home'>('loading');
+  const [currentPage, setCurrentPage] = useState<'loading' | 'enter' | 'welcome' | 'home'>('loading');
   const [progress, setProgress] = useState(0);
+  const [showEnterButton, setShowEnterButton] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => setCurrentPage('welcome'), 500);
+          setShowEnterButton(true);
           return 100;
         }
         return prev + 2;
@@ -271,6 +365,10 @@ const AppContent: React.FC = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  const handleEnterClick = () => {
+    setCurrentPage('welcome');
+  };
 
   useEffect(() => {
     if (currentPage === 'welcome') {
@@ -342,25 +440,81 @@ const AppContent: React.FC = () => {
           <Star left="87%" top="65%" size="1.5px" delay="2.65s" />
           <Star left="97%" top="45%" size="2px" delay="2.85s" />
         </StarsContainer>
-        <LoadingText
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Loading...
-        </LoadingText>
         
-        <LoadingBar>
-          <LoadingProgress
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.1 }}
-          />
-        </LoadingBar>
+        <SolarSystemContainer>
+          <Sun />
+          
+          {/* Mercury */}
+          <Orbit radius={60} duration={3}>
+            <Planet color="#8C7853" size={8} />
+          </Orbit>
+          
+          {/* Venus */}
+          <Orbit radius={80} duration={4}>
+            <Planet color="#FFC649" size={10} />
+          </Orbit>
+          
+          {/* Earth */}
+          <Orbit radius={100} duration={5}>
+            <Planet color="#6B93D6" size={12} />
+          </Orbit>
+          
+          {/* Mars */}
+          <Orbit radius={120} duration={6}>
+            <Planet color="#C1440E" size={10} />
+          </Orbit>
+          
+          {/* Jupiter */}
+          <Orbit radius={140} duration={8}>
+            <Planet color="#D8CA9D" size={18} />
+          </Orbit>
+          
+          {/* Saturn */}
+          <Orbit radius={160} duration={10}>
+            <Planet color="#FAD5A5" size={15} />
+          </Orbit>
+          
+          {/* Uranus */}
+          <Orbit radius={180} duration={12}>
+            <Planet color="#4FD0E3" size={12} />
+          </Orbit>
+          
+          {/* Neptune */}
+          <Orbit radius={200} duration={15}>
+            <Planet color="#4B70DD" size={12} />
+          </Orbit>
+          
+          <ClockHand progress={progress / 100} />
+          
+          {showEnterButton && (
+            <EnterButton
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              onClick={handleEnterClick}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              ENTER
+            </EnterButton>
+          )}
+        </SolarSystemContainer>
         
-        <Percentage>
-          {progress}%
-        </Percentage>
+        {!showEnterButton && (
+          <>
+            <LoadingText
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              Loading...
+            </LoadingText>
+            
+            <Percentage>
+              {progress}%
+            </Percentage>
+          </>
+        )}
       </LoadingContainer>
     );
   }
