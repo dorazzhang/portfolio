@@ -114,9 +114,6 @@ const SpotifySection: React.FC<SpotifySectionProps> = ({ favoriteSongs, descript
     </TabContent>
   );
 
-  const renderTabContent = () => {
-    return renderSongsTab();
-  };
 
   return (
     <SpotifySectionContainer>
@@ -126,7 +123,7 @@ const SpotifySection: React.FC<SpotifySectionProps> = ({ favoriteSongs, descript
       </SpotifyDescription>
 
       <TabsContainer>
-        {renderTabContent()}
+        {renderSongsTab()}
       </TabsContainer>
     </SpotifySectionContainer>
   );

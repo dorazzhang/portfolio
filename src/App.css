@@ -41,48 +41,4 @@ code {
   transition: all 0.3s ease;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .LoadingContainer h2 {
-    font-size: 1.5rem !important;
-  }
-  
-  .LoadingBar {
-    width: 250px !important;
-  }
-  
-  .Percentage {
-    font-size: 2.5rem !important;
-  }
-  
-  .WelcomeTitle {
-    font-size: 3rem !important;
-  }
-  
-  .WelcomeSubtitle {
-    font-size: 1.2rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .LoadingContainer h2 {
-    font-size: 1.2rem !important;
-  }
-  
-  .LoadingBar {
-    width: 200px !important;
-  }
-  
-  .Percentage {
-    font-size: 2rem !important;
-  }
-  
-  .WelcomeTitle {
-    font-size: 2.5rem !important;
-  }
-  
-  .WelcomeSubtitle {
-    font-size: 1rem !important;
-  }
-}
 

@@ -244,9 +244,6 @@ const ProjectGalleryComponent: React.FC<{ images: string[]; title: string }> = (
     setImageError(false);
   };
 
-  // Debug logging
-  console.log('Gallery images:', images);
-  console.log('Current image:', images[currentImageIndex]);
 
   return (
     <ProjectGallery>
@@ -261,12 +258,10 @@ const ProjectGalleryComponent: React.FC<{ images: string[]; title: string }> = (
           onClick={nextImage}
           style={{ cursor: 'pointer' }}
           onError={(e) => {
-            console.error('Image failed to load:', images[currentImageIndex]);
-            console.error('Error event:', e);
             setImageError(true);
           }}
           onLoad={() => {
-            console.log('Image loaded successfully:', images[currentImageIndex]);
+            // Image loaded successfully
           }}
         />
       ) : (

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -126,76 +125,6 @@ const HobbiesTitle = styled.h2`
   text-align: center;
 `;
 
-const HobbiesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin-bottom: 40px;
-`;
-
-const HobbyCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 30px 25px;
-  text-align: left;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    
-    &::before {
-      opacity: 1;
-    }
-  }
-`;
-
-const HobbyHeader = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const HobbyIcon = styled.div`
-  font-size: 2.5rem;
-  margin-right: 18px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-`;
-
-const HobbyTitle = styled.h3`
-  font-family: 'Lora', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  margin: 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-`;
-
-const HobbyDescription = styled.p`
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-`;
 
 // New styled components for the spaced hobby sections
 const HobbySection = styled.div`
@@ -311,72 +240,6 @@ const BookImage = styled.img`
   display: block;
 `;
 
-const MusicCardsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 700px;
-  margin: 0 auto;
-`;
-
-const MusicCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 25px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-`;
-
-const MusicCardHeader = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const MusicCardIcon = styled.div`
-  font-size: 2rem;
-  margin-right: 15px;
-`;
-
-const MusicCardTitle = styled.h4`
-  font-family: 'Lora', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: white;
-  margin: 0;
-`;
-
-const MusicCardContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const MusicArtist = styled.div`
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-`;
-
-const MusicGenre = styled.div`
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-`;
 
 // New styled components for left-right layout
 const HobbySectionContent = styled.div`

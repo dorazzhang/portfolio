@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -119,13 +118,6 @@ const ClockHand = styled(motion.div)<{ progress: number }>`
   z-index: 5;
 `;
 
-const LoadingText = styled(motion.h2)`
-  font-size: 2rem;
-  margin: 40px 0 0 0;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-align: center;
-`;
 
 
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
@@ -305,7 +297,7 @@ const NavigationWrapper: React.FC = () => {
 };
 
 const AppContent: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'loading' | 'enter' | 'welcome' | 'home'>('loading');
+  const [currentPage, setCurrentPage] = useState<'loading' | 'welcome' | 'home'>('loading');
   const [progress, setProgress] = useState(0);
   const [showEnterButton, setShowEnterButton] = useState(false);
   const [showEnterText, setShowEnterText] = useState(false);
