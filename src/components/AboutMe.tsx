@@ -284,52 +284,6 @@ const ReadingParagraph = styled.p`
   text-align: left;
 `;
 
-const ReadingLink = styled.span`
-  color: #4ecdc4;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  
-  &:hover {
-    color: #45b7d1;
-  }
-`;
-
-const FunSection = styled.div`
-  text-align: center;
-  margin-bottom: 40px;
-`;
-
-const PictureGallery = styled.div`
-  position: relative;
-  height: 600px;
-  width: 100%;
-  margin: 0 auto;
-`;
-
-const PictureCard = styled(motion.div)<{ size?: string; left: string; top: string; width?: string; height?: string }>`
-  position: absolute;
-  left: ${props => props.left};
-  top: ${props => props.top};
-  width: ${props => props.width || props.size || '200px'};
-  height: ${props => props.height || props.size || '200px'};
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  
-  &:hover {
-    z-index: 100;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-  }
-`;
-
-const PictureImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-`;
 
 const AboutMe: React.FC = () => {
   return (
