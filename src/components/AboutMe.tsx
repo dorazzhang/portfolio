@@ -529,7 +529,7 @@ const AboutMe: React.FC = () => {
         
         <MainSection>
           <ProfileSection>
-            <ProfileImage src="/portfolio/images/profile.PNG" alt="Dora's profile picture" />
+            <ProfileImage src="/portfolio/images/myself.png" alt="Dora's profile picture" />
           </ProfileSection>
           
           <AboutSection>

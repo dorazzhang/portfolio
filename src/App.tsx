@@ -53,7 +53,7 @@ const SolarSystemContainer = styled.div`
   margin: 0 auto;
 `;
 
-const Sun = styled.div`
+const Sun = styled(motion.button)<{ isInteractive: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -62,9 +62,20 @@ const Sun = styled.div`
   height: 40px;
   background: radial-gradient(circle, #ffd700, #ff8c00);
   border-radius: 50%;
+  border: none;
   box-shadow: 0 0 20px #ffd700;
   z-index: 10;
+  cursor: ${props => props.isInteractive ? 'pointer' : 'default'};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    ${props => props.isInteractive && `
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 30px #ffd700;
+    `}
+  }
 `;
+
 
 const Orbit = styled.div<{ radius: number; duration: number }>`
   position: absolute;
@@ -83,10 +94,11 @@ const Orbit = styled.div<{ radius: number; duration: number }>`
   }
 `;
 
-const Planet = styled.div<{ color: string; size: number }>`
+const Planet = styled.div<{ color: string; size: number; angle: number; radius: number }>`
   position: absolute;
-  top: -${props => props.size / 2}px;
-  right: -${props => props.size / 2}px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(${props => props.angle}deg) translateY(-${props => props.radius}px);
   width: ${props => props.size}px;
   height: ${props => props.size}px;
   background: ${props => props.color};
@@ -115,29 +127,6 @@ const LoadingText = styled(motion.h2)`
   text-align: center;
 `;
 
-const EnterButton = styled(motion.button)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffd700, #ff8c00);
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
-  }
-`;
 
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
   position: absolute;
@@ -165,37 +154,6 @@ const StarsContainer = styled.div`
   width: 100%;
   height: 100%;
   pointer-events: none;
-`;
-
-const LoadingBar = styled.div`
-  width: 300px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  margin: 20px 0;
-  overflow: hidden;
-  position: relative;
-`;
-
-const LoadingProgress = styled(motion.div)`
-  height: 100%;
-  background: white;
-  border-radius: 10px;
-  transition: width 0.1s ease;
-`;
-
-const LoadingText = styled(motion.h2)`
-  font-size: 2rem;
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: 2px;
-`;
-
-const Percentage = styled.span`
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 20px 0;
-  display: block;
 `;
 
 const WelcomeContainer = styled(motion.div)`
@@ -350,6 +308,7 @@ const AppContent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'loading' | 'enter' | 'welcome' | 'home'>('loading');
   const [progress, setProgress] = useState(0);
   const [showEnterButton, setShowEnterButton] = useState(false);
+  const [showEnterText, setShowEnterText] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -357,9 +316,11 @@ const AppContent: React.FC = () => {
         if (prev >= 100) {
           clearInterval(timer);
           setShowEnterButton(true);
+          // Add text after sun scaling animation completes
+          setTimeout(() => setShowEnterText(true), 500);
           return 100;
         }
-        return prev + 2;
+        return prev + 3.33;
       });
     }, 50);
 
@@ -442,79 +403,84 @@ const AppContent: React.FC = () => {
         </StarsContainer>
         
         <SolarSystemContainer>
-          <Sun />
+          <Sun 
+            isInteractive={showEnterButton}
+            onClick={showEnterButton ? handleEnterClick : undefined}
+            animate={showEnterButton ? { 
+              scale: 3,
+              boxShadow: "0 0 40px #ffd700",
+              x: "-50%",
+              y: "-50%"
+            } : {
+              scale: 1,
+              x: "-50%",
+              y: "-50%"
+            }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {showEnterText && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                style={{
+                  color: 'white',
+                  fontSize: '0.6rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.5px',
+                  textAlign: 'center',
+                  display: 'block',
+                  lineHeight: '40px'
+                }}
+              >
+                ENTER
+              </motion.span>
+            )}
+          </Sun>
           
           {/* Mercury */}
           <Orbit radius={60} duration={3}>
-            <Planet color="#8C7853" size={8} />
+            <Planet color="#8C7853" size={8} angle={23} radius={60} />
           </Orbit>
           
           {/* Venus */}
           <Orbit radius={80} duration={4}>
-            <Planet color="#FFC649" size={10} />
+            <Planet color="#FFC649" size={10} angle={147} radius={80} />
           </Orbit>
           
           {/* Earth */}
           <Orbit radius={100} duration={5}>
-            <Planet color="#6B93D6" size={12} />
+            <Planet color="#6B93D6" size={12} angle={289} radius={100} />
           </Orbit>
           
           {/* Mars */}
           <Orbit radius={120} duration={6}>
-            <Planet color="#C1440E" size={10} />
+            <Planet color="#C1440E" size={10} angle={67} radius={120} />
           </Orbit>
           
           {/* Jupiter */}
           <Orbit radius={140} duration={8}>
-            <Planet color="#D8CA9D" size={18} />
+            <Planet color="#D8CA9D" size={18} angle={234} radius={140} />
           </Orbit>
           
           {/* Saturn */}
           <Orbit radius={160} duration={10}>
-            <Planet color="#FAD5A5" size={15} />
+            <Planet color="#FAD5A5" size={15} angle={156} radius={160} />
           </Orbit>
           
           {/* Uranus */}
           <Orbit radius={180} duration={12}>
-            <Planet color="#4FD0E3" size={12} />
+            <Planet color="#4FD0E3" size={12} angle={312} radius={180} />
           </Orbit>
           
           {/* Neptune */}
           <Orbit radius={200} duration={15}>
-            <Planet color="#4B70DD" size={12} />
+            <Planet color="#4B70DD" size={12} angle={89} radius={200} />
           </Orbit>
           
           <ClockHand progress={progress / 100} />
-          
-          {showEnterButton && (
-            <EnterButton
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              onClick={handleEnterClick}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              ENTER
-            </EnterButton>
-          )}
         </SolarSystemContainer>
         
-        {!showEnterButton && (
-          <>
-            <LoadingText
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              Loading...
-            </LoadingText>
-            
-            <Percentage>
-              {progress}%
-            </Percentage>
-          </>
-        )}
       </LoadingContainer>
     );
   }
