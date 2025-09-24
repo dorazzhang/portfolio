@@ -9,6 +9,14 @@ const ProjectsPageContainer = styled(motion.div)`
   padding: 40px 0;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 30px 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 20px 0;
+  }
 `;
 
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
@@ -42,6 +50,15 @@ const StarsContainer = styled.div`
 const ContentWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
 `;
 
 const PageTitle = styled.h1`
@@ -51,6 +68,16 @@ const PageTitle = styled.h1`
   color: white;
   margin-bottom: 20px;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
 `;
 
 const Disclaimer = styled.p`
@@ -154,6 +181,14 @@ const ProjectContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 15px;
+  }
 `;
 
 const HackathonTag = styled.div`
@@ -179,6 +214,15 @@ const ProjectTitle = styled.h3`
   font-weight: 600;
   color: white;
   margin-bottom: 15px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -187,6 +231,16 @@ const ProjectDescription = styled.p`
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
 `;
 
 const ProjectTech = styled.div`

@@ -10,6 +10,14 @@ const AboutContainer = styled(motion.div)`
   padding: 100px 0 40px 0;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0 30px 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 70px 0 20px 0;
+  }
 `;
 
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
@@ -43,6 +51,15 @@ const StarsContainer = styled.div`
 const ContentWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
 `;
 
 const PageTitle = styled.h1`
@@ -52,6 +69,16 @@ const PageTitle = styled.h1`
   color: white;
   margin-bottom: 40px;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
 `;
 
 const MainSection = styled.div`
@@ -83,6 +110,17 @@ const ProfileImage = styled.img`
   display: block;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   object-fit: cover;
+  
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 320px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 260px;
+    border-radius: 15px;
+  }
 `;
 
 
@@ -97,6 +135,18 @@ const AboutSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 300px;
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 12px;
+    border-radius: 15px;
+    min-height: 250px;
+  }
 `;
 
 
@@ -109,6 +159,16 @@ const AboutText = styled.p`
   
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 `;
 

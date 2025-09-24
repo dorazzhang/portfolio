@@ -9,6 +9,14 @@ const ContactContainer = styled(motion.div)`
   padding: 100px 0 40px 0;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 80px 0 30px 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 70px 0 20px 0;
+  }
 `;
 
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
@@ -43,6 +51,15 @@ const ContentWrapper = styled.div`
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
 `;
 
 const PageTitle = styled.h1`
@@ -52,6 +69,16 @@ const PageTitle = styled.h1`
   color: white;
   margin-bottom: 40px;
   text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
 `;
 
 const ChatDescription = styled.p`
@@ -84,6 +111,18 @@ const ContactItem = styled.a`
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 20px 25px;
+    gap: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 15px 20px;
+    gap: 12px;
+    flex-direction: column;
+    text-align: center;
   }
 `;
 

@@ -187,6 +187,15 @@ const TopBar = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+    justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+  }
 `;
 
 const Navigation = styled.nav`
@@ -195,6 +204,16 @@ const Navigation = styled.nav`
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
+  
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 6px 12px;
+    border-radius: 15px;
+  }
 `;
 
 const NavList = styled.ul`
@@ -204,6 +223,16 @@ const NavList = styled.ul`
   display: flex;
   gap: 25px;
   align-items: center;
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 const NavItem = styled.li`
@@ -230,6 +259,17 @@ const NavLink = styled.a<{ active?: boolean }>`
   &:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    letter-spacing: 0.3px;
   }
 `;
 

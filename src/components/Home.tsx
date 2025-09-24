@@ -19,6 +19,20 @@ const Moon = styled.div`
   filter: blur(2px);
   box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    top: 30px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  @media (max-width: 480px) {
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const Star = styled.div<{ left: string; top: string; size: string; delay: string }>`
@@ -57,6 +71,21 @@ const MainContent = styled.div`
   justify-content: center;
   left: 100px;
   position: absolute;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    left: 20px;
+    right: 20px;
+    padding: 0 10px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media (max-width: 480px) {
+    left: 10px;
+    right: 10px;
+    padding: 0 5px;
+  }
 `;
 
 const NameTitle = styled.h1`
@@ -69,6 +98,23 @@ const NameTitle = styled.h1`
   display: flex;
   align-items: center;
   gap: 20px;
+  
+  @media (max-width: 1024px) {
+    font-size: 5rem;
+    gap: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+    gap: 8px;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -79,6 +125,19 @@ const Subtitle = styled.p`
   color: white;
   line-height: 1.6;
   opacity: 0.95;
+  max-width: 600px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 20px 0 0 0;
+    max-width: 100%;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 `;
 
 
@@ -94,6 +153,16 @@ const DoraIcon = styled.div`
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+  
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
   }
 `;
 
