@@ -534,7 +534,7 @@ const AboutMe: React.FC = () => {
           
           <AboutSection>
             <AboutText>
-              Hi! I'm Dora, a student at Cornell University studying Computer Science with a minor in AI/ECE. 
+              Hi! I'm Dora, a student at Cornell University studying Computer Science with intended minors in AI/ECE. 
             </AboutText>
             <AboutText>
               I'm interested in exploring the wide-ranging applications of machine learning and AI in the real world.

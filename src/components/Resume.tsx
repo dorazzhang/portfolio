@@ -300,6 +300,18 @@ const Resume: React.FC = () => {
 
           <ResumeCard>
             <CardHeader>
+              <CardTitle>Society of Women Engineers, Junior Finance Director</CardTitle>
+              <CardDate>April 2025 - Present</CardDate>
+            </CardHeader>
+            <CardSubtitle>Ithaca, NY</CardSubtitle>
+            <CardContent>
+              • Coordinated purchases & reimbursements across 8 committees to ensure timely procurement for various events<br/>
+              • Supported professional development and reduced barriers for 250+ women engineers by streamlining finances
+            </CardContent>
+          </ResumeCard>
+
+          <ResumeCard>
+            <CardHeader>
               <CardTitle>UCSD Picasso Lab, Undergraduate Research Assistant</CardTitle>
               <CardDate>May 2025 - Sept 2025</CardDate>
             </CardHeader>
